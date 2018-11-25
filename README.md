@@ -1,5 +1,7 @@
 # webtools
-Language-related web tools which are could be of use for a linguist: https://tools.philology.by/
+Language-related web tools which are could be of use for a linguist.
+
+This toolset is available as a web-service at https://tools.philology.by/
 
 ### 1. Scientific transliteration tool for Belarusian and Russian
 
