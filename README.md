@@ -1,4 +1,4 @@
-# webtools
+# Webtools of Philology.BY
 Language-related web tools which are could be of use for a linguist.
 
 This toolset is available as a web-service at https://tools.philology.by/
