@@ -1,32 +1,3 @@
-// const { Client } = require('pg')
-// const client = new Client({
-  // user: 'someuser',
-  // host: 'localhost',
-  // database: 'somedata',
-  // password: 'nRIUCIN2XrJAZigmBffw',
-  // // port: 3211,
-// })
-
-// ftp://ftp.unicode.org/Public/3.0-Update/UnicodeData-3.0.0.html
-
-// client.connect()
-// if (!String.prototype.padStart) {
-    // String.prototype.padStart = function padStart(targetLength,padString) {
-        // targetLength = targetLength>>0; //truncate if number or convert non-number to 0;
-        // padString = String((typeof padString !== 'undefined' ? padString : ' '));
-        // if (this.length > targetLength) {
-            // return String(this);
-        // }
-        // else {
-            // targetLength = targetLength-this.length;
-            // if (targetLength > padString.length) {
-                // padString += padString.repeat(targetLength/padString.length); //append to original to ensure we are longer than needed
-            // }
-            // return padString.slice(0,targetLength) + String(this);
-        // }
-    // };
-// }
-
 function getCode(x){
 	return x.codePointAt(0).toString(16).toUpperCase().padStart(4, "0");
 }
@@ -97,20 +68,13 @@ const arrayToObject = (array) =>
    }, {})
 
 function getChars(req, res, next) {
-	// console.log(req.query);
-
 	if (req.body && req.body.txt){
 		console.log(req.body.txt);
-		// let str  = "прывітанка! Ў🐒です";
-		// let val = getCode("Ы");
 		let arr = [];
-		// 1F412;MONKEY
 		let mapping  = [];
 		for (letter of req.body.txt) {
 			let val = getCode(letter);
-			// mapping.push({[letter]: val});
 			mapping.push([letter, val]);
-			// console.log(letter, val);
 			 if (arr.indexOf(val) === -1) {
 				arr.push(val);				
 			 }
@@ -122,7 +86,6 @@ function getChars(req, res, next) {
 					.json({
 					  status: 'success',
 					  data: {content: arrayToObject(data), mapping: mapping},
-					  // message: 'Retrieved ALL puppies'
 					});
 				})
 				.catch(function (err) {
@@ -130,22 +93,6 @@ function getChars(req, res, next) {
 				});
 		}
 	}
-	
-
 }
 
 app.listen(port);
-
-// db.any("SELECT codeval, charname from unidata where codeval = ANY($1)", [arr])
-    // .then(data => {
-		// console.log(data);
-        // return data;
-    // });
-	
-	
-// client.query('SELECT $1::text as message', ['Hello world!'], (err, res) => {
-// client.query('SELECT codeval, charname from unidata where codeval = $1', [val], (err, res) => {
-// client.query('SELECT codeval, charname from unidata where codeval = ANY($1)', [arr], (err, res) => {
-  // console.log(err ? err.stack : JSON.stringify(res.rows));
-  // client.end()
-// })
