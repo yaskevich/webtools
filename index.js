@@ -1,24 +1,10 @@
 const path = require('path');
 require('dotenv').config()
-// const promise = require('bluebird');
-// const pgp = require('pg-promise')({ promiseLib: promise });
 const express = require('express');
-const createError = require('http-errors');
-// const logger = require('morgan');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-
-// const conObject  = {
-    // host: process.env.PGHOST || 'localhost',
-    // port: process.env.PGPORT || 5432,
-    // database: process.env.PGDATABASE,
-    // user: process.env.PGUSER, 
-	// password: process.env.PGPASSWORD
-// };
-
-// const db = pgp(conObject);
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT||7711;
 const uniArr = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'unicode-data.json')), 'utf8');
 const uniKV = Object.fromEntries(uniArr.map(item => [item.codeval, item]));
 
@@ -28,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use( bodyParser.json() );
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.get('/char', function(req, res, next) {
@@ -62,34 +48,13 @@ function getChars(req, res, next) {
 			if (!Reflect.getOwnPropertyDescriptor(dataObject, val)) {
 				dataObject[val] = uniKV[val]["charname"];
 			}
-			 // if (arr.indexOf(val) === -1) {
-				// arr.push(val);				
-			 // }
 		}	
 		
 		if (Object.keys(dataObject).length){
-		// if (arr.length){
 			res.status(200).json({status: 'success', data: {content: dataObject, mapping: mapping},});
-			// db.any("SELECT codeval, charname from unidata where codeval = ANY($1)", [arr])
-				// .then(function (data) {
-				  // res.status(200)
-					// .json({
-					  // status: 'success',
-					  // data: {content: arrayToObject(data), mapping: mapping},
-					// });
-				// })
-				// .catch(function (err) {
-				  // return next(err);
-				// });
+
 		}
 	}
 }
 
-// const arrayToObject = (array) =>
-   // array.reduce((obj, item) => {
-     // obj[item.codeval] = item.charname;
-     // return obj
-   // }, {}
-// );
-
-app.listen(port||8080);
+app.listen(port);

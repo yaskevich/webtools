@@ -1,15 +1,21 @@
 {
-  "name": "pg-test",
-  "version": "1.0.0",
-  "description": "",
+  "name": "tools",
+  "version": "2.0.0",
+  "description": "Toolset for Linguitsic Processing",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yaskevich/webtools"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Alyaxey Yaskevich",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "dotenv": "^8.2.0",
-    "pg": "^8.4.0"
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
   }
 }
