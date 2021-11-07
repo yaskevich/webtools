@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
-const port = process.env.PORT||7711;
+const port = process.env.PORT || 8080;
 const uniArr = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'unicode-data.json')), 'utf8');
 const uniKV = Object.fromEntries(uniArr.map(item => [item.codeval, item]));
 
