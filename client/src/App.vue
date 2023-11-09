@@ -1,0 +1,83 @@
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+</script>
+
+<template>
+    <header class="sticky row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <a href="/" class="logo">Toolset</a>
+        <a href="https://philology.by/" target="_blank" class="button">Philology.BY</a>
+      </div>
+    </header>
+
+    <!-- <label for="modal-toggle">Show modal</label> -->
+
+    <!-- <input id="modal-toggle" type="checkbox"/> -->
+    <!-- <div class="modal"> -->
+    <!-- <div class="card"> -->
+    <!-- <label for="modal-toggle" class="close"></label> -->
+    <!-- <h3 class="section">Modal</h3> -->
+    <!-- <p class="section">This is a modal window!</p> -->
+    <!-- </div> -->
+    <!-- </div> -->
+
+    <!-- <div class="row"> -->
+    <!-- <div class="col-sm-12 col-md-10 col-md-offset-1"> -->
+    <!-- <mark class="tag">BE</mark> -->
+    <!-- <mark class="tag">RU</mark> -->
+    <!-- <mark class="tag" style="background:black;">EN</mark> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <div class="row">
+
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <br />
+        <h3>Scientific transliteration (romanization)</h3>
+        <hr />
+
+        <p><a href="/latbe">for Belarusian texts</a></p>
+        <p><a href="/latru">for Russian texts</a></p>
+
+        <!-- <a href="/be.html" class="button">Belarusian</a> -->
+        <!-- <a href="/ru.html" class="button">Russian</a> -->
+
+
+      </div>
+    </div>
+
+
+    <!-- <div class="row"> -->
+    <!-- <div class="col-sm-12 col-md-10 col-md-offset-1"> -->
+    <!-- <h3>Character codes processing</h3><hr/> -->
+    <!-- <p>...soon</p> -->
+    <!-- <p><a href="/char">Character Classification</a></p> -->
+    <!-- <p><a href="/key">On-the-fly Ru→Be Keyboard Key Conversion</a></p> -->
+    <!-- </div> -->
+    <!-- </div> -->
+
+
+
+    <footer class="row" style="width:100%">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <!-- Транслітарацыя беларускіх і рускіх тэкстаў для патрэб навуковых публікацый (славістыка, тэорыя мовы) -->
+        Linguistic Toolset for character level processing
+      </div>
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        &copy; <a href="https://yaskevich.com/" target="_blank" style="text-decoration:none;">Alyaxey Yaskevich</a>,
+        2018 @ Philology.BY project.
+      </div>
+    </footer>
+    <!-- <div class="wrapper">
+
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </div> -->
+
+  <RouterView />
+</template>
+
+<style scoped>
+
+</style>
