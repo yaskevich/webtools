@@ -1,83 +1,64 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-    <header class="sticky row">
-      <div class="col-sm-12 col-md-10 col-md-offset-1">
-        <a href="/" class="logo">Toolset</a>
-        <a href="https://philology.by/" target="_blank" class="button">Philology.BY</a>
-      </div>
-    </header>
-
-    <!-- <label for="modal-toggle">Show modal</label> -->
-
-    <!-- <input id="modal-toggle" type="checkbox"/> -->
-    <!-- <div class="modal"> -->
-    <!-- <div class="card"> -->
-    <!-- <label for="modal-toggle" class="close"></label> -->
-    <!-- <h3 class="section">Modal</h3> -->
-    <!-- <p class="section">This is a modal window!</p> -->
-    <!-- </div> -->
-    <!-- </div> -->
-
-    <!-- <div class="row"> -->
-    <!-- <div class="col-sm-12 col-md-10 col-md-offset-1"> -->
-    <!-- <mark class="tag">BE</mark> -->
-    <!-- <mark class="tag">RU</mark> -->
-    <!-- <mark class="tag" style="background:black;">EN</mark> -->
-    <!-- </div> -->
-    <!-- </div> -->
-    <div class="row">
-
-      <div class="col-sm-12 col-md-10 col-md-offset-1">
-        <br />
-        <h3>Scientific transliteration (romanization)</h3>
-        <hr />
-
-        <p><a href="/latbe">for Belarusian texts</a></p>
-        <p><a href="/latru">for Russian texts</a></p>
-
-        <!-- <a href="/be.html" class="button">Belarusian</a> -->
-        <!-- <a href="/ru.html" class="button">Russian</a> -->
+  <header class="sticky row color">
+    <div class="col-sm-12 col-md-10 col-md-offset-1 color">
+      <!-- <a href="/" class="logo color">Toolset</a> -->
+      <button :class="{ 'active': state === 'latbe' }" @click="state = 'latbe'">BEL ⇒ LAT </button>
+      <button :class="{ 'active': state === 'latru' }" @click="state = 'latru'">RUS ⇒ LAT</button>
+      <button :class="{ 'active': state === 'enbe' }" @click="state = 'enbe'">BEL ⇒ ENG</button>
+      <button :class="{ 'active': state === 'char' }" @click="state = 'char'">Decoder</button>
+      <a href="https://philology.by/" target="_blank" class="button">Philology.BY</a>
+    </div>
+  </header>
 
 
-      </div>
+  <div class="row">
+
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <br />
+      <h3>Scientific transliteration (romanization)</h3>
+      <hr />
+      {{ state }}
+      <p><a href="/latbe">for Belarusian texts</a></p>
+      <p><a href="/latru">for Russian texts</a></p>
+
+      <!-- <a href="/be.html" class="button">Belarusian</a> -->
+      <!-- <a href="/ru.html" class="button">Russian</a> -->
+    </div>
+  </div>
+  <footer class="row color" style="width:100%">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <!-- Транслітарацыя беларускіх і рускіх тэкстаў для патрэб навуковых публікацый (славістыка, тэорыя мовы) -->
+      Linguistic Toolset for character level processing.<br />Транслітарацыя беларускіх тэкстаў для патрэб навуковых
+      публікацый (славістыка, тэорыя мовы)
     </div>
 
-
-    <!-- <div class="row"> -->
-    <!-- <div class="col-sm-12 col-md-10 col-md-offset-1"> -->
-    <!-- <h3>Character codes processing</h3><hr/> -->
-    <!-- <p>...soon</p> -->
-    <!-- <p><a href="/char">Character Classification</a></p> -->
-    <!-- <p><a href="/key">On-the-fly Ru→Be Keyboard Key Conversion</a></p> -->
-    <!-- </div> -->
-    <!-- </div> -->
-
-
-
-    <footer class="row" style="width:100%">
-      <div class="col-sm-12 col-md-10 col-md-offset-1">
-        <!-- Транслітарацыя беларускіх і рускіх тэкстаў для патрэб навуковых публікацый (славістыка, тэорыя мовы) -->
-        Linguistic Toolset for character level processing
-      </div>
-      <div class="col-sm-12 col-md-10 col-md-offset-1">
-        &copy; <a href="https://yaskevich.com/" target="_blank" style="text-decoration:none;">Alyaxey Yaskevich</a>,
-        2018 @ Philology.BY project.
-      </div>
-    </footer>
-    <!-- <div class="wrapper">
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div> -->
-
-  <RouterView />
+    <div class="col-sm-12 col-md-10 col-md-offset-1 ">
+      &copy; <a href="https://yaskevich.com/" target="_blank" style="text-decoration:none;">Alyaxey Yaskevich</a>,
+      2018, 2023 @ Philology.BY
+    </div>
+  </footer>
 </template>
 
-<style scoped>
+<script setup lang="ts">
+import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { ref } from 'vue'
+const vuerouter = useRoute();
+const path = window.location.pathname?.slice(1);
 
+console.log("kek", vuerouter.params, path);
+
+const state = ref('latbe');
+
+const handle = (str: string) => {
+  console.log("clicked", str);
+
+}
+
+</script>
+<style scoped>
+.active,
+.color {
+  background: #283593;
+  color: #fafafa !important;
+}
 </style>
