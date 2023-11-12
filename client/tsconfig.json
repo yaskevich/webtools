@@ -1,4 +1,12 @@
 {
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json"
+, "../data/*.json"  ],
   "files": [],
   "references": [
     {
